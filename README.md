@@ -7,8 +7,10 @@
 
 3.然后进行初始化
   PickerActionSheet *actionSheet = [[PickerActionSheet alloc] init];
-    actionSheet.delegate = self;
-    [actionSheet showActionSheet:self];
+  
+  actionSheet.delegate = self;
+    
+  [actionSheet showActionSheet:self];
     
   4.添加代理方法：
   - (void)finishChoose:(NSDictionary *)dictionary{
