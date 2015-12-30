@@ -12,3 +12,6 @@
   - (void)finishChoose:(NSDictionary *)dictionary{
   - 
   - }
+  - 可选代理:
+  - (void)pickerViewShowStatu:(Picker_Error)error；
+详见代码。
