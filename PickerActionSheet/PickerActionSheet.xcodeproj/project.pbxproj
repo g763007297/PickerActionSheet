@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B69521461CE2C58300F288AF /* GQPickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B69521451CE2C58300F288AF /* GQPickerActionSheet.m */; };
 		DF1BF6321C33A63B004EF8E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1BF6311C33A63B004EF8E1 /* main.m */; };
 		DF1BF6351C33A63B004EF8E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1BF6341C33A63B004EF8E1 /* AppDelegate.m */; };
 		DF1BF6401C33A63B004EF8E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1BF63F1C33A63B004EF8E1 /* Assets.xcassets */; };
@@ -14,7 +15,6 @@
 		DF1BF6591C33A63C004EF8E1 /* PickerActionSheetUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1BF6581C33A63C004EF8E1 /* PickerActionSheetUITests.m */; };
 		DF1BF6671C33A679004EF8E1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF1BF6661C33A679004EF8E1 /* Launch Screen.storyboard */; };
 		DF1BF66A1C33A693004EF8E1 /* PickerActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1BF6691C33A693004EF8E1 /* PickerActionSheetViewController.m */; };
-		DF1BF66E1C33A6BC004EF8E1 /* PickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1BF66D1C33A6BC004EF8E1 /* PickerActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B69521441CE2C58300F288AF /* GQPickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQPickerActionSheet.h; sourceTree = "<group>"; };
+		B69521451CE2C58300F288AF /* GQPickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQPickerActionSheet.m; sourceTree = "<group>"; };
 		DF1BF62D1C33A63B004EF8E1 /* PickerActionSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickerActionSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF1BF6311C33A63B004EF8E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DF1BF6331C33A63B004EF8E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -50,8 +52,6 @@
 		DF1BF6661C33A679004EF8E1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DF1BF6681C33A693004EF8E1 /* PickerActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerActionSheetViewController.h; sourceTree = "<group>"; };
 		DF1BF6691C33A693004EF8E1 /* PickerActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerActionSheetViewController.m; sourceTree = "<group>"; };
-		DF1BF66C1C33A6BC004EF8E1 /* PickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerActionSheet.h; sourceTree = "<group>"; };
-		DF1BF66D1C33A6BC004EF8E1 /* PickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B69521431CE2C58300F288AF /* GQPickerActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				B69521441CE2C58300F288AF /* GQPickerActionSheet.h */,
+				B69521451CE2C58300F288AF /* GQPickerActionSheet.m */,
+			);
+			path = GQPickerActionSheet;
+			sourceTree = "<group>";
+		};
 		DF1BF6241C33A63B004EF8E1 = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +111,7 @@
 		DF1BF62F1C33A63B004EF8E1 /* PickerActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				DF1BF66B1C33A6AF004EF8E1 /* PickerActionSheet */,
+				B69521431CE2C58300F288AF /* GQPickerActionSheet */,
 				DF1BF6331C33A63B004EF8E1 /* AppDelegate.h */,
 				DF1BF6341C33A63B004EF8E1 /* AppDelegate.m */,
 				DF1BF6681C33A693004EF8E1 /* PickerActionSheetViewController.h */,
@@ -139,15 +148,6 @@
 				DF1BF65A1C33A63C004EF8E1 /* Info.plist */,
 			);
 			path = PickerActionSheetUITests;
-			sourceTree = "<group>";
-		};
-		DF1BF66B1C33A6AF004EF8E1 /* PickerActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				DF1BF66C1C33A6BC004EF8E1 /* PickerActionSheet.h */,
-				DF1BF66D1C33A6BC004EF8E1 /* PickerActionSheet.m */,
-			);
-			path = PickerActionSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,9 +280,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF1BF6351C33A63B004EF8E1 /* AppDelegate.m in Sources */,
+				B69521461CE2C58300F288AF /* GQPickerActionSheet.m in Sources */,
 				DF1BF6321C33A63B004EF8E1 /* main.m in Sources */,
 				DF1BF66A1C33A693004EF8E1 /* PickerActionSheetViewController.m in Sources */,
-				DF1BF66E1C33A6BC004EF8E1 /* PickerActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

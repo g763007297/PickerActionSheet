@@ -7,9 +7,9 @@
 //
 
 #import "PickerActionSheetViewController.h"
-#import "PickerActionSheet.h"
+#import "GQPickerActionSheet.h"
 
-@interface PickerActionSheetViewController ()<PickerActionSheetDelegate>
+@interface PickerActionSheetViewController ()<__GQPickerActionSheetDelegate>
 
 @end
 
@@ -45,15 +45,14 @@
 
 #pragma  mark -- buttonAction
 - (void)showActionSheet:(id)sender{
-    PickerActionSheet *actionSheet = [[PickerActionSheet alloc] init];
-    actionSheet.delegate = self;
-    [actionSheet showActionSheet:self];
+    GQPickerActionSheet *actionSheet = [[GQPickerActionSheet alloc] init];
+    [actionSheet showActionSheet:self withDelegate:self];
 }
 
 #pragma mark -- PickerActionSheetDelegate
 - (void)finishChoose:(NSDictionary *)dictionary{
-    NSString *imageName = dictionary[imageNameKey];
-    UIImage *imageData = dictionary[imageDataKey];
+    NSString *imageName = dictionary[__GQImageNameKey];
+    UIImage *imageData = dictionary[__GQImageDataKey];
     
     NSLog(@"%@",imageName);
     

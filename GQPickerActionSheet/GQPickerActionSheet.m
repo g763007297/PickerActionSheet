@@ -6,15 +6,27 @@
 //  Copyright © 2015年 tusm. All rights reserved.
 //
 
-#import "PickerActionSheet.h"
+#import "GQPickerActionSheet.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@implementation PickerActionSheet
+#define __GQSystemVersion [[[UIDevice currentDevice] systemVersion] floatValue]
 
-- (void)showActionSheet:(UIViewController *)controller{
+@interface GQPickerActionSheet()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+    NSInteger imageflag;//1:拍照 2:相册
+    UIViewController *controllers;
+}
+
+@property (nonatomic, weak) id<__GQPickerActionSheetDelegate> mdelegate;
+
+@end
+
+@implementation GQPickerActionSheet
+
+- (void)showActionSheet:(UIViewController *)controller withDelegate:(id<__GQPickerActionSheetDelegate>)delegate{
     controllers = controller;
-    if (SystemVersion >= 8) {
+    _mdelegate = delegate;
+    if (__GQSystemVersion >= 8) {
         UIAlertController *alterController = [UIAlertController alertControllerWithTitle:@"上传图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         [alterController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
             
@@ -66,7 +78,7 @@
 #pragma mark -拍照
 -(void)snapImage{
     BOOL isCameraAuthoriza = YES;
-    if (SystemVersion > 7.0) {
+    if (__GQSystemVersion > 7.0) {
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         }];
         AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
@@ -87,21 +99,21 @@
             [ipc setSourceType:UIImagePickerControllerSourceTypeCamera];
             [ipc setAllowsEditing:YES];
             
-            if (self.delegate&&[self.delegate respondsToSelector:@selector(pickerViewShowStatu:)]) {
-                [self.delegate pickerViewShowStatu:PSuccess];
+            if (self.mdelegate&&[self.mdelegate respondsToSelector:@selector(pickerViewShowStatu:)]) {
+                [self.mdelegate pickerViewShowStatu:PSuccess];
             }
             
             [controllers presentViewController:ipc animated:YES completion:^{
                 
             }];
         }else {
-            if (self.delegate&&[self.delegate respondsToSelector:@selector(pickerViewShowStatu:)]) {
-                [self.delegate pickerViewShowStatu:PUnable];
+            if (self.mdelegate&&[self.mdelegate respondsToSelector:@selector(pickerViewShowStatu:)]) {
+                [self.mdelegate pickerViewShowStatu:PUnable];
             }
         }
     }else{
-        if (self.delegate&&[self.delegate respondsToSelector:@selector(pickerViewShowStatu:)]) {
-            [self.delegate pickerViewShowStatu:PAuthoriza];
+        if (self.mdelegate&&[self.mdelegate respondsToSelector:@selector(pickerViewShowStatu:)]) {
+            [self.mdelegate pickerViewShowStatu:PAuthoriza];
         }
     }
 }
@@ -114,8 +126,8 @@
     ipc.delegate = self;
     ipc.allowsEditing = YES;
     imageflag = 2;
-    if (self.delegate&&[self.delegate respondsToSelector:@selector(pickerViewShowStatu:)]) {
-        [self.delegate pickerViewShowStatu:PSuccess];
+    if (self.mdelegate&&[self.mdelegate respondsToSelector:@selector(pickerViewShowStatu:)]) {
+        [self.mdelegate pickerViewShowStatu:PSuccess];
     }
     [controllers presentViewController:ipc animated:YES completion:^{
         
@@ -135,13 +147,13 @@
             NSTimeInterval a=[dat timeIntervalSince1970];
             NSInteger time = a;
             NSString *timeString = [NSString stringWithFormat:@"%ld.JPG", time];
-            [info setValue:timeString forKey:imageNameKey];
+            [info setValue:timeString forKey:__GQImageNameKey];
         }else if (imageflag == 2){
-            [info setValue:[imageRep filename] forKey:imageNameKey];
+            [info setValue:[imageRep filename] forKey:__GQImageNameKey];
         }
         [controllers dismissViewControllerAnimated:YES completion:^{
-            if (self.delegate&&[self.delegate respondsToSelector:@selector(finishChoose:)]) {
-                [self.delegate finishChoose:info];
+            if (self.mdelegate&&[self.mdelegate respondsToSelector:@selector(finishChoose:)]) {
+                [self.mdelegate finishChoose:info];
             }
         }];
     };
@@ -151,7 +163,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:image forKey:imageDataKey];
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:image forKey:__GQImageDataKey];
     [self imagePickerController:picker didFinishPickingMediaWithInfo:dict];
 }
 
