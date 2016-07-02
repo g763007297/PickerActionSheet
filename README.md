@@ -20,7 +20,6 @@
   - (void)finishChoose:(NSDictionary *)dictionary;
   @optional
   - (void)pickerViewShowStatu:(Picker_Error)error；
-详见代码。
 ``` 
 
 ##Support
